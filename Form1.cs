@@ -121,5 +121,44 @@ namespace tabla_03
             }
             sw.Close();
         }
+
+        private void buttonModificar_Click(object sender, EventArgs e) //¡¡¡REPARAR ESTE MÉTODO!!!
+        {
+            //iNTRODUCIMOS UN NOMBRE EN EL TEXTBOXNOMBRE Y lo buscamos en el datagridview. Si no existe, enviamos un mensaje.
+            //Si lo encontramos, mostramos los datos en los textbox correspondientes.
+            //Si los datos de los textbox no están vacíos, los modificamos y sobreescribimos el archivo.
+           
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            //iNTRODUCIMOS UN NOMBRE EN EL TEXTBOXNOMBRE Y lo buscamos en el datagridview. Si no existe, enviamos un mensaje.
+            //Si lo encontramos, mostramos los datos en los textbox correspondientes.
+            //Si encontramos una parte del nombre en el datagridview, mostramos todos los registros que contengan esa parte.
+            
+            
+            
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
+                if (tabla.Rows[i].Cells[0].Value.ToString().Contains(textBoxNombre.Text))
+                {
+                    textBoxNombre.Text = tabla.Rows[i].Cells[0].Value.ToString();
+                    textBoxTelefono.Text = tabla.Rows[i].Cells[1].Value.ToString();
+                    textBoxMail.Text = tabla.Rows[i].Cells[2].Value.ToString();
+                }
+                /**
+                {
+                    textBoxTelefono.Text = tabla.Rows[i].Cells[1].Value.ToString();
+                    textBoxMail.Text = tabla.Rows[i].Cells[2].Value.ToString();
+                    break;
+                }**/
+            }
+
+            if (textBoxTelefono.Text == "" && textBoxMail.Text == "")
+            {
+                MessageBox.Show("No se ha encontrado el nombre");
+                textBoxNombre.Select();
+            }
+        }
     }
 }
